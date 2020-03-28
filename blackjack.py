@@ -23,17 +23,26 @@ def main():
     dealer.hand_cards.clear()
     dealer.choice = ""
 
-    player1.hand_cards.append(deck1.draw_card())
-    dealer.hand_cards.append(deck1.draw_card())
+    value_of_card_player1 = player1.hand_cards.append(deck1.draw_card())
+    value_of_card_dealer = dealer.hand_cards.append(deck1.draw_card())
 
     def player1_hand(self):
-        while sum(self.player1.hand_cards) < 21:
-            player_action = str(input("Do you want HIT or STAY "))
-        if player_action == 'HIT':
-            self.player1.hand_cards.append((random.randint(1, 11)))
-            print("Now Player has " + str(sum(self.player1.hand_cards) + "with these cards" + self.player1.hand_cards))
-        else:
-            print("You have " + str(sum(self.player1.hand_cards) + "with these cards" + self.player1.hand_cards))
+        while True:
+            if sum(value_of_card_player1.total_points) < 21:
+                player_action = str(input("Do you want HIT or STAY "))
+            if player_action == 'HIT':
+                player1.hand_cards.append((deck1.draw_card()))
+                print("Now Player has " + str(sum(player1.hand_cards) + "with these cards" + player1.hand_cards))
+            elif player_action == "STAY":
+                print("You have " + str(sum(player1.hand_cards) + "with these cards" + player1.hand_cards))
+            elif sum(value_of_card_dealer.total_points) > 21:
+                print("Player1 Busted")
+                break
+
+                
+
+
+
 
 
 

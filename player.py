@@ -22,6 +22,7 @@ class Player():
         rank = 0
         for i in self.hand_cards:
             rank += card.rank
+        return rank
 
         if rank > 21:
             for card in self.hand_cards:

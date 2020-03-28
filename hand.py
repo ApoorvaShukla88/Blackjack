@@ -7,7 +7,8 @@ def __init__(self, ):
     self.cards = []
 
 
-def add_value():
+def add_card():
     pass
 
-def
+def get_value():
+    pass

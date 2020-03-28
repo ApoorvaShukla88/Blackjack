@@ -12,3 +12,7 @@ class Deck:
 
 
     def draw_card(self):
+        card = self.cards.pop()
+        return card
+
+    

@@ -7,3 +7,9 @@ while len(dealer_cards) != 2:
     if len(dealer_cards) == 2:
         print("Dealer has X and " + dealer_cards[1])
 
+if sum(dealer_cards) == 21:
+    print("Dealer has 21 and Win")
+elif sum(dealer_cards) > 21:
+    print("Dealer has Busted")
+
+

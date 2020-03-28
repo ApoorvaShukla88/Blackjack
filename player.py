@@ -1,32 +1,44 @@
 import random
-import Hand
-import Dealer
 
 
-class Player(Hand, Dealer):
+class Player():
 
-    def __init__(self, player_cards):
-        self.player_cards = []
-
+    def __init__(self):
+        self.hand_cards = []
+        self.choice = ""
 
     def no_of_cards_in_hand(self):
-        while len(self.player_cards) != 2:
-            self.player_cards.append(random.randint(1,11))
-        if len(self.player_cards) == 2:
-            print("You Have "+ self.player_cards)
+        while len(self.hand_cards) != 2:
+            self.hand_cards.append(random.randint(1, 11))
+        if len(self.hand_cards) == 2:
+            print("You Have " + self.hand_cards)
 
-    def player_hand(self):
-        while sum(self.player_cards) < 21:
-            player_action = str(input("Do you want HIT or STAY "))
-        if player_action == 'HIT':
-            self.player_cards.append((random.randint(1,11)))
-            print("Now Player has "+ str(sum(self.player_cards) + "with these cards" + self.player_cards))
+            no_of_cards = len(self.hand_cards)
+
+        for i in range(no_of_cards):
+            card = self.hand_cards[i]
+
+    def total_points(self):
+        rank = 0
+        for i in self.hand_cards:
+            rank += card.rank
+
+        if rank > 21:
+            for card in self.hand_cards:
+                if rank == 11:
+                    rank -= 10
         else:
-            print("You have "+ str(sum(self.player_cards) + "with these cards" + self.player_cards))
+            return rank
 
 
-    def result(self):
-        if str(sum(self.dealer_cards) > str(sum(self.player_cards):
-            print("Dealer WIN")
-        else:
-            print("Player WIN")
+
+    def welcome(self):
+        print("Welcome to BackJack Game")
+
+
+
+
+
+
+
+

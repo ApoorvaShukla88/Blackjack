@@ -34,8 +34,8 @@ class Player():
     def show_hand(self):
         returnStr = ''
         for card in self.hand_cards:
-            returnStr += card.suit + ":" + str(card.rank) + "\n"
-        return returnStr
+            returnStr += " " + card.suit + ":" + str(card.rank)
+        return returnStr + " Total: " +str(self.total_points())
 
 
 

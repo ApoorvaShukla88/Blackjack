@@ -13,29 +13,29 @@ def player1_hand(player1, deck1):
                 player1.hand_cards.append((deck1.draw_card()))
                 print("Now Player has " + player1.show_hand() + " with these cards" + str(player1.show_hand()))
             elif player_action == "STAY":
-                print("You have " + player1.show_hand() + "with these cards" + str(player1.show_hand()))
-                break
-        elif player1.total_points > 21:
+                print("You have " + player1.show_hand() + " with these cards" + str(player1.show_hand()))
+                return
+        elif player1.total_points() > 21:
             print("Player1 Busted")
+            exit(0)
+        elif player1.total_points() == 21:
+            print("Player1 Won")
             exit(0)
 
 
 def dealer_hand(dealer, deck1):
     while True:
-        if dealer.total_points > 21:
+        if dealer.total_points() > 21:
             print("Dealer Busted")
             exit(0)
         elif dealer.total_points() < 21:
-            player_action = str(input("Do you want HIT or STAY "))
-            if player_action == 'HIT':
+            if dealer.total_points() > 17:
+                print("Dealer cant draw anymore card :" + dealer.show_hand())
+                return
+            else:
                 dealer.hand_cards.append((deck1.draw_card()))
                 print("Now Dealer has " + dealer.show_hand() + " with these cards" + dealer.show_hand())
-                if dealer.hand_cards > 17:
-                    print("Dealer cant draw anymore card :" + dealer.show_hand())
-                    break
-                else:
-                    dealer.hand_cards.append((deck1.draw_card()))
-                    print("Now Dealer has " + dealer.show_hand() + " with these cards" + dealer.show_hand())
+
 
 
 
@@ -52,6 +52,7 @@ def main():
     deck1 = Deck()
 
     deck1.reset()
+    deck1.shuffle()
 
     player1.hand_cards.clear()
     player1.choice = ""
@@ -60,15 +61,18 @@ def main():
     dealer.choice = ""
 
     player1.hand_cards.append(deck1.draw_card())
-    print("Player1 has " + str(player1.show_hand()))
     dealer.hand_cards.append(deck1.draw_card())
-    print("Dealer has " + str(dealer.show_hand()))
 
+
+    print("\nPlayer Turn\n")
+    print("Player1 has " + str(player1.show_hand()))
     player1_hand(player1, deck1)
+    print("\nDealer Turn\n")
+    print("Dealer has " + str(dealer.show_hand()))
     dealer_hand(dealer, deck1)
+    result(dealer,player1)
 
-    result()
-    exit(0)
+
 
 
 if __name__ == "__main__":

@@ -1,4 +1,4 @@
-from random import random
+import random
 
 from Blackjack.card import Card
 
@@ -18,8 +18,14 @@ class Deck():
             for j in suits:
                 self.cards.append(Card(ranks[i], j))
 
+
+
+
     def shuffle(self):
         random.shuffle(self.cards)
+
+
+
 
     def draw_card(self):
         card = self.cards.pop()

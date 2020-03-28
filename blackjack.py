@@ -5,12 +5,48 @@ from Blackjack.deck import Deck
 from Blackjack.player import Player
 
 
+def player1_hand(player1, deck1):
+    while True:
+        if player1.total_points() < 21:
+            player_action = str(input("Do you want HIT or STAY "))
+            if player_action == 'HIT':
+                player1.hand_cards.append((deck1.draw_card()))
+                print("Now Player has " + str(sum(player1.hand_cards) + " with these cards" + str(player1.hand_cards)))
+            elif player_action == "STAY":
+                print("You have " + str(sum(player1.hand_cards) + "with these cards" + str(player1.hand_cards)))
+                break
+        elif player1.total_points > 21:
+            print("Player1 Busted")
+            exit(0)
 
 
+def dealer_hand(dealer, deck1):
+    while True:
+        if dealer.total_points > 21:
+            print("Dealer Busted")
+            exit(0)
+        elif dealer.total_points() < 21:
+            player_action = str(input("Do you want HIT or STAY "))
+            if player_action == 'HIT':
+                dealer.hand_cards.append((deck1.draw_card()))
+                print("Now Dealer has " + str(sum(dealer.hand_cards) + " with these cards" + str(dealer.hand_cards)))
+                if dealer.hand_cards > 17:
+                    print("Dealer cant draw anymore card :" + dealer.hand_cards)
+                    break
+                else:
+                    dealer.hand_cards.append((deck1.draw_card()))
+                    print("Now Dealer has " + str(sum(dealer.hand_cards) + " with these cards" + str(dealer.hand_cards)))
+
+
+
+def result(dealer, player1):
+    if dealer.total_points() > player1.total_points():
+        print("Dealer WIN")
+    else:
+        print("Player1 WIN")
 
 
 def main():
-
     dealer = Player()
     player1 = Player()
     deck1 = Deck()
@@ -23,75 +59,41 @@ def main():
     dealer.hand_cards.clear()
     dealer.choice = ""
 
-    value_of_card_player1 = player1.hand_cards.append(deck1.draw_card())
-    value_of_card_dealer = dealer.hand_cards.append(deck1.draw_card())
+    player1.hand_cards.append(deck1.draw_card())
+    print("Player1 has " + str(player1.show_hand()))
+    dealer.hand_cards.append(deck1.draw_card())
+    print("Dealer has " + str(dealer.show_hand()))
 
-    def player1_hand(self):
-        while True:
-            if sum(value_of_card_player1.total_points) < 21:
-                player_action = str(input("Do you want HIT or STAY "))
-            if player_action == 'HIT':
-                player1.hand_cards.append((deck1.draw_card()))
-                print("Now Player has " + str(sum(player1.hand_cards) + "with these cards" + player1.hand_cards))
-            elif player_action == "STAY":
-                print("You have " + str(sum(player1.hand_cards) + "with these cards" + player1.hand_cards))
-            elif sum(value_of_card_dealer.total_points) > 21:
-                print("Player1 Busted")
-                break
+    player1_hand(player1, deck1)
+    dealer_hand(dealer, deck1)
 
-                
+    result()
+    exit(0)
+
+
+if __name__ == "__main__":
+    print("Welcome to BackJack Game")
+    main()
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def result(self):
-    if str(sum(self.dealer_cards) > str(sum(self.player_cards):
-        print("Dealer WIN")
-    else:
-        print("Player WIN")
-
-        # from random import random
-        # import Hand
-        #
-        # class Dealer(Hand):
-        #
-        #     def __init__(self, dealer_cards):
-        #         self.dealer_cards = []
-        #
-        #     def no_of_cards_in_hand(self):
-        #         while len(self.dealer_cards) != 2:
-        #             self.dealer_cards.append(random.randint(1, 11))
-        #         if len(self.dealer_cards) == 2:
-        #             print("Dealer has X and " + self.dealer_cards[1])
-        #
-        #     def dealer_hand(self):
-        #         if sum(self.dealer_cards) == 21:
-        #             print("Dealer has 21 and Win")
-        #         elif sum(self.dealer_cards) > 21:
-        #             print("Dealer has Busted")
+# from random import random
+# import Hand
+#
+# class Dealer(Hand):
+#
+#     def __init__(self, dealer_cards):
+#         self.dealer_cards = []
+#
+#     def no_of_cards_in_hand(self):
+#         while len(self.dealer_cards) != 2:
+#             self.dealer_cards.append(random.randint(1, 11))
+#         if len(self.dealer_cards) == 2:
+#             print("Dealer has X and " + self.dealer_cards[1])
+#
+#     def dealer_hand(self):
+#         if sum(self.dealer_cards) == 21:
+#             print("Dealer has 21 and Win")
+#         elif sum(self.dealer_cards) > 21:
+#             print("Dealer has Busted")

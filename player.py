@@ -19,22 +19,27 @@ class Player():
             card = self.hand_cards[i]
 
     def total_points(self):
-        rank = 0
+        total_rank = 0
         for i in self.hand_cards:
-            rank += card.rank
-        return rank
+            total_rank += i.rank
 
-        if rank > 21:
+        if total_rank > 21:
             for card in self.hand_cards:
-                if rank == 11:
-                    rank -= 10
-        else:
-            return rank
+                if card.rank == 11:
+                    total_rank -= 10
+                    return total_rank
+
+        return total_rank
+
+    def show_hand(self):
+        returnStr = ''
+        for card in self.hand_cards:
+            returnStr += card.suit + ":" + str(card.value) + "\n"
+        return returnStr
 
 
 
-    def welcome(self):
-        print("Welcome to BackJack Game")
+
 
 
 

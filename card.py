@@ -21,4 +21,5 @@ class Card:
             return self.rank
 
     def __str__(self):
-        return self.rank + " " + self.suit
+        return self.suit + ":" + self.value()
+

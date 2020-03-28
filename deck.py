@@ -14,9 +14,11 @@ class Deck():
         ranks = [11, 10, 10, 10, 10, 9, 8 ,7, 6, 5, 4, 3, 2]
         suits = ["Club", "Spade", "Diamond", "Hearts"]
 
-        for i in ranks:
+        for i in range(len(ranks)):
             for j in suits:
-                self.cards.append(Card(i, j))
+                self.cards.append(Card(ranks[i], j))
+
+        print(self.cards)
 
 
 

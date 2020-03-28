@@ -16,7 +16,7 @@ class Card:
         if self.rank in ['J', 'Q', 'K']:
             return 10
         elif self.rank == 'A':
-            return 1, 11
+            return random()
         else:
             return self.rank
 

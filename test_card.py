@@ -7,8 +7,10 @@ from Blackjack.card import Card
 class TestCard(unittest.TestCase):
 
     def test_value(self):
-        self.assertEqual(Card.value('J'), 10)
-        self.assertEqual(Card.value('A'), 11)
+        card = Card(10, "J")
+        card1 = Card(11, 'A')
+        self.assertEqual(card.value(), 10)
+        self.assertEqual(card1.value(), 11)
 
 
 if __name__ == "__main__":

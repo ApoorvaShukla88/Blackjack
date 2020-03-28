@@ -11,9 +11,9 @@ def player1_hand(player1, deck1):
             player_action = str(input("Do you want HIT or STAY "))
             if player_action == 'HIT':
                 player1.hand_cards.append((deck1.draw_card()))
-                print("Now Player has " + str(sum(player1.hand_cards) + " with these cards" + str(player1.hand_cards)))
+                print("Now Player has " + player1.show_hand() + " with these cards" + str(player1.show_hand()))
             elif player_action == "STAY":
-                print("You have " + str(sum(player1.hand_cards) + "with these cards" + str(player1.hand_cards)))
+                print("You have " + player1.show_hand() + "with these cards" + str(player1.show_hand()))
                 break
         elif player1.total_points > 21:
             print("Player1 Busted")
@@ -29,13 +29,13 @@ def dealer_hand(dealer, deck1):
             player_action = str(input("Do you want HIT or STAY "))
             if player_action == 'HIT':
                 dealer.hand_cards.append((deck1.draw_card()))
-                print("Now Dealer has " + str(sum(dealer.hand_cards) + " with these cards" + str(dealer.hand_cards)))
+                print("Now Dealer has " + dealer.show_hand() + " with these cards" + dealer.show_hand())
                 if dealer.hand_cards > 17:
-                    print("Dealer cant draw anymore card :" + dealer.hand_cards)
+                    print("Dealer cant draw anymore card :" + dealer.show_hand())
                     break
                 else:
                     dealer.hand_cards.append((deck1.draw_card()))
-                    print("Now Dealer has " + str(sum(dealer.hand_cards) + " with these cards" + str(dealer.hand_cards)))
+                    print("Now Dealer has " + dealer.show_hand() + " with these cards" + dealer.show_hand())
 
 
 

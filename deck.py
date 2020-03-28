@@ -18,13 +18,8 @@ class Deck():
             for j in suits:
                 self.cards.append(Card(ranks[i], j))
 
-        print(self.cards)
-
-
-
     def shuffle(self):
-      random.shuffle(self.cards)
-
+        random.shuffle(self.cards)
 
     def draw_card(self):
         card = self.cards.pop()

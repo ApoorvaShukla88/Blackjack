@@ -11,7 +11,7 @@ class Player():
         while len(self.hand_cards) != 2:
             self.hand_cards.append(random.randint(1, 11))
         if len(self.hand_cards) == 2:
-            print("You Have " + self.hand_cards)
+            print("You Have " + str(self.hand_cards))
 
             no_of_cards = len(self.hand_cards)
 

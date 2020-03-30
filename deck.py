@@ -24,7 +24,7 @@ class Deck():
 
 
     def draw_card(self):
-        card = self.cards.pop()
-        return card
+        del_card = self.cards.pop()
+        return del_card
 
 

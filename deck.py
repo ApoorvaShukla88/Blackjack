@@ -19,16 +19,12 @@ class Deck():
                 self.cards.append(Card(ranks[i], j))
 
 
-
-
     def shuffle(self):
         random.shuffle(self.cards)
 
 
-
-
     def draw_card(self):
-        card = self.cards.pop()
-        return card
+        del_card = self.cards.pop()
+        return del_card
 
 

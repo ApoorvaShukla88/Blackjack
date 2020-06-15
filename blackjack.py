@@ -11,9 +11,9 @@ def player1_hand(player1, deck1):
             player_action = str(input("Do you want HIT or STAY "))
             if player_action == 'HIT':
                 player1.hand_cards.append((deck1.draw_card()))
-                print("Now Player has " + player1.show_hand() + " with these cards" + str(player1.show_hand()))
+                print("Now Player has " + player1.show_hand() + str(player1.show_hand()))
             elif player_action == "STAY":
-                print("You have " + player1.show_hand() + " with these cards" + str(player1.show_hand()))
+                print("You have " + player1.show_hand() + str(player1.show_hand()))
                 return
         elif player1.total_points() > 21:
             print("Player1 Busted")
@@ -34,7 +34,7 @@ def dealer_hand(dealer, deck1):
                 return
             else:
                 dealer.hand_cards.append((deck1.draw_card()))
-                print("Now Dealer has " + dealer.show_hand() + " with these cards" + dealer.show_hand())
+                print("Now Dealer has " + dealer.show_hand() + dealer.show_hand())
 
 
 
